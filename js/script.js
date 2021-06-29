@@ -5,10 +5,24 @@ const load = document.querySelector('.btn-load--input');
 const image = document.querySelector('img');
 let imgNum = 0;
 
+// function setValue() {
+//     const suffix = this.childNodes[1].dataset.sizing;
+//     document.documentElement.style.setProperty(`--${this.childNodes[1].name}`, this.childNodes[1].value + suffix);
+//     this.childNodes[3].value = this.childNodes[1].value
+// }
 function setValue() {
-    const suffix = this.childNodes[1].dataset.sizing;
-    document.documentElement.style.setProperty(`--${this.childNodes[1].name}`, this.childNodes[1].value + suffix);
-    this.childNodes[3].value = this.childNodes[1].value
+    let value;
+    this.childNodes.forEach(child => {
+        let suffix;
+        if (child.nodeName === 'INPUT') {
+            suffix = child.dataset.sizing;
+            document.documentElement.style.setProperty(`--${child.name}`, child.value + suffix);
+            value = child.value;  
+        }
+        if (child.nodeName === 'OUTPUT') { 
+            child.value = value;
+        }
+    })
 }
 
 inputs.forEach(input => input.addEventListener('input', setValue));
