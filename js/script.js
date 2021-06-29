@@ -59,7 +59,7 @@ function nextImg() {
     if (imgNum === 21) imgNum = 1;
     const imageNum = String(imgNum).padStart(2, '0');
     const img = new Image();
-    img.src = `assets/img/${timeOfDay}/${imageNum}.jpg`;
+    img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${imageNum}.jpg`;
     img.addEventListener('load', () => image.src = `${img.src}`);
 }
 next.addEventListener('click', nextImg);
