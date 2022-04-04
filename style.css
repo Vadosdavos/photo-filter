@@ -9,17 +9,17 @@ a:focus {
 }
 body {
   min-height: 100vh;
-  background-color: #313940;
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  background-color: var(--base);
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   overflow-x: hidden;
 }
 .header {
   text-align: center;
   width: 100%;
-  background: #313940;
+  background: var(--base);
   border-bottom: 1px solid;
   border-image-slice: 1;
-  border-image-source: linear-gradient(to left, #38495a, #a2abb3, #38495a);
+  border-image-source: linear-gradient(to left, var(--base), #a2abb3, var(--base));
 }
 .header-title {
   line-height: 60px;
@@ -28,13 +28,19 @@ body {
 }
 .main {
   min-height: calc(100vh - 110px);
-  padding: 58px 10px 0;
+  padding: 20px 10px 0;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-wrap: wrap;
   width: 100%;
   max-width: 1140px;
   margin: 0 auto;
+}
+h2 {
+  color: #fff;
+  margin-bottom: 15px;
+  text-transform: uppercase;
 }
 label:not(.btn) {
   display: block;
@@ -53,7 +59,7 @@ label:hover output {
 label:active output {
   color: #cbd5de;
 }
-input[type="range"] {
+input[type='range'] {
   display: block;
   appearance: none;
   height: 3px;
@@ -65,17 +71,17 @@ input[type="range"] {
   cursor: pointer;
   width: 100%;
 }
-input[type="range"]::-webkit-slider-thumb {
+input[type='range']::-webkit-slider-thumb {
   appearance: none;
   width: 25px;
   height: 25px;
-  background-color: #313940;
+  background-color: var(--base);
   border: 3px solid #a2abb3;
   border-radius: 50%;
   cursor: pointer;
   transition: 0.3s;
 }
-label:hover input[type="range"]::-webkit-slider-thumb {
+label:hover input[type='range']::-webkit-slider-thumb {
   background-color: #00c9b7;
 }
 output {
@@ -92,8 +98,13 @@ output {
   border-radius: 2px;
   transition: 0.3s;
 }
+.bgcolor-out {
+  top: 0;
+  padding-left: 5px;
+  font-size: 0.75em;
+}
 .btn-container {
-  margin-bottom: 20px;
+  margin-bottom: 95px;
   padding: 2px;
   display: flex;
   justify-content: center;
@@ -112,7 +123,7 @@ output {
   background-color: #454c53;
   border: 0;
   border-radius: 2px;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   font-weight: 300;
   color: #fff;
@@ -151,8 +162,7 @@ output {
 .filters {
   width: 100%;
   max-width: 40%;
-  padding-top: 60px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 .editor {
   display: flex;
@@ -167,10 +177,15 @@ output {
   --sepia: 0%;
   --saturate: 100%;
   --hue: 0deg;
+  --base: #313940;
+  --spacing: 80%;
+}
+body {
+  background-color: var(--base, #313940);
 }
 img {
   height: 100%;
-  width: 100%;
+  width: var(--spacing, 80%);
   max-height: 520px;
   max-width: 830px;
   object-fit: contain;
@@ -188,19 +203,19 @@ img {
   background-size: contain;
   transition: 0.3s;
   cursor: pointer;
-  background-image: url("assets/svg/fullscreen-open.svg");
+  background-image: url('assets/svg/fullscreen-open.svg');
 }
 .fullscreen:hover {
   background-color: rgba(255, 255, 255, 0.5);
 }
 :-webkit-full-screen .fullscreen {
-  background-image: url("assets/svg/fullscreen-exit.svg");
+  background-image: url('assets/svg/fullscreen-exit.svg');
 }
 .footer {
   border-top: 1px solid;
   border-image-slice: 1;
-  border-image-source: linear-gradient(to left, #38495a, #a2abb3, #38495a);
-  background-color: #313940;
+  border-image-source: linear-gradient(to left, var(--base), #a2abb3, var(--base));
+  background-color: var(--base);
 }
 .footer-container {
   padding: 0 15px;
@@ -216,14 +231,14 @@ img {
   width: 120px;
   height: 45px;
   padding-left: 45px;
-  background-image: url("assets/svg/github.svg");
+  background-image: url('assets/svg/github.svg');
   background-size: 35px;
   background-repeat: no-repeat;
   background-position: left center;
   line-height: 45px;
   color: #cbd5de;
   font-size: 16px;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   transition: 0.3s;
 }
 .github:hover {
@@ -232,10 +247,10 @@ img {
 .rss {
   display: block;
   position: relative;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   width: 86px;
   height: 32px;
-  background-image: url("assets/svg/rss.svg");
+  background-image: url('assets/svg/rss.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: left center;
@@ -256,23 +271,6 @@ img {
   right: -5px;
   letter-spacing: 0;
 }
-.rss::after {
-  content: "Vadosdavos";
-  position: absolute;
-  font-family: inherit;
-  font-size: 25px;
-  color: rgb(231, 6, 6);
-  font-weight: bold;
-  z-index: 10;
-  transform: rotate(-15deg) translate(-10px, -18px);
-  text-decoration: underline;
-  transition: 0.5s;
-}
-.rss:hover.rss::after {
-  position: absolute;
-  transform: rotate(0deg) translate(-10px, -18px) scale(1.2);
-  transition: 0.5s;
-}
 @media (max-width: 1024px) {
   .main {
     padding-top: 40px;
@@ -289,6 +287,7 @@ img {
     flex-wrap: wrap;
     margin-left: -10px;
     margin-right: -10px;
+    margin-bottom: 20px;
   }
   .btn-container > *:last-child {
     margin-right: 10px;
@@ -308,6 +307,9 @@ img {
     right: 20px;
     width: 40px;
     height: 40px;
+  }
+  img {
+    margin-bottom: 20px;
   }
 }
 @media (max-width: 375px) {
